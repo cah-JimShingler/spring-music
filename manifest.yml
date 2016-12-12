@@ -6,5 +6,5 @@ applications:
   random-route: true
   path: ./build/libs/spring-music.war
   host: jsspring-music
-  services:
-    - apm3
+  #services:
+  #  - apm3
