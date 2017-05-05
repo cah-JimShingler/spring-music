@@ -12,15 +12,15 @@ resources:
       uri: {{GIT_REPO}}
       branch: {{GIT_BRANCH}}
 
-  - name: deploy-test-app
-    type: cf
-    source:
-      api: {{CF_API}}
-      username: {{CF_USER}}
-      password: {{CF_PASS}}
-      organization: {{CF_TEST_ORG}}
-      space: {{CF_TEST_SPACE}}
-      skip_cert_check: true
+  # - name: deploy-test-app
+  #   type: cf
+  #   source:
+  #     api: {{CF_API}}
+  #     username: {{CF_USER}}
+  #     password: {{CF_PASS}}
+  #     organization: {{CF_TEST_ORG}}
+  #     space: {{CF_TEST_SPACE}}
+  #     skip_cert_check: true
 
   - name: deploy-dev-app
     type: cf
@@ -32,15 +32,15 @@ resources:
       space: {{CF_DEV_SPACE}}
       skip_cert_check: true
 
-  - name: build-artifact-jar
-    type: maven
-    source:
-      group: com.example
-      artifact: concourse-spring-boot
-      # repository: MAVEN_REPO/repository/maven-snapshots
-      repository: http://192.168.1.178:8081/repository/maven-snapshots
-      # re:pository: http://172.30.7.5:8081/repository/maven-snapshots
-      # repository: http://10.210.168.181:8081/repository/maven-snapshot
+  # - name: build-artifact-jar
+  #   type: maven
+  #   source:
+  #     group: com.example
+  #     artifact: concourse-spring-boot
+  #     # repository: MAVEN_REPO/repository/maven-snapshots
+  #     repository: http://192.168.1.178:8081/repository/maven-snapshots
+  #     # re:pository: http://172.30.7.5:8081/repository/maven-snapshots
+  #     # repository: http://10.210.168.181:8081/repository/maven-snapshot
 
 jobs:
   - name: unit-tests
@@ -95,5 +95,3 @@ jobs:
   #       manifest: source-code/manifest.yml
   #       current_app_name: spring-music
   #       path: build-artifact-jar/spring-music.war
-
-
