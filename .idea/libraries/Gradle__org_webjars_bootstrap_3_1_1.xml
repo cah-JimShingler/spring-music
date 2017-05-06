@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: org.webjars:bootstrap:3.1.1">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/bootstrap/3.1.1/bootstrap-3.1.1.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

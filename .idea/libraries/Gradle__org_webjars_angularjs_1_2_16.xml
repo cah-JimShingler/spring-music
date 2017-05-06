@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: org.webjars:angularjs:1.2.16">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/angularjs/1.2.16/angularjs-1.2.16.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

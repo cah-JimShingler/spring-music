@@ -1,3 +1,27 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.0'
+        classpath 'org.cloudfoundry:cf-gradle-plugin:1.0.2'
+    }
+}
+
+plugins {
+  id "org.sonarqube" version "2.4"
+}
+
+repositories {
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+    mavenLocal()
+    mavenCentral()
+}
+
 apply plugin: 'java'
 
 apply plugin: 'eclipse-wtp'
@@ -7,13 +31,10 @@ apply plugin: 'tomcat'
 apply plugin: 'war'
 
 apply plugin: 'cloudfoundry'
-
 apply plugin: 'maven-publish'
 apply plugin: 'jacoco'
 
-//plugins {
-//  id "org.sonarqube" version "2.4"
-//}
+
 
 group = 'com.example'
 jar {
@@ -42,25 +63,7 @@ jar {
     }
 }
 
-buildscript {
-    repositories {
-        jcenter()
-        mavenLocal()
-        mavenCentral()
-    }
 
-    dependencies {
-        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.0'
-        classpath 'org.cloudfoundry:cf-gradle-plugin:1.0.2'
-    }
-}
-
-repositories {
-    maven { url "http://repo.spring.io/snapshot" }
-    maven { url "http://repo.spring.io/milestone" }
-    mavenLocal()
-    mavenCentral()
-}
 
 dependencies {
     // Spring and dependencies
@@ -125,7 +128,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.9'
+    gradleVersion = '3.5'
 }
 
 war {
@@ -181,9 +184,9 @@ jacoco {
     toolVersion = "0.7.6.201602180812"
 }
 
-//sonarqube {
-//  properties {
-//    property "sonar.projectName", "Spring Music Concourse"
-//    property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
-//  }
-//}
+sonarqube {
+  properties {
+    property "sonar.projectName", "Spring Music Concourse"
+    property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
+  }
+}
