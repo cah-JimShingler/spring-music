@@ -1,9 +1,10 @@
+#https://github.com/patrickcrocker/maven-resource
 resource_types:
-  - name: maven
+  - name: maven-resource
     type: docker-image
     source:
-      repository: twic/maven-repo-resource
-      tag: "1"
+      repository: patrickcrocker/maven-resource
+      tag: latest
 
 resources:
   - name: source-code
@@ -11,6 +12,16 @@ resources:
     source:
       uri: {{GIT_REPO}}
       branch: {{GIT_BRANCH}}
+
+resources:
+- name: milestone
+  type: maven-resource
+  source:
+    url: {{MAVEN_REPO}}/milestones
+    artifact: com.example:example-webapp:jar
+    username: admin
+    password: admin123
+    skip_cert_check: true
 
   # - name: deploy-test-app
   #   type: cf
@@ -52,26 +63,22 @@ jobs:
       file: source-code/ci/tasks/unit.yml
       params:
         SONAR: {{SONAR}}
-#DELETE  # - name: unit-tests
-  #   plan:
-  #   - get: source-code
-  #     trigger: true
-  #   - task: run-tests
-  #     privileged: true
-  #     file: source-code/ci/tasks/unit.yml
     # - put: deploy-dev-app
     #   params:
     #     manifest: source-code/manifest.yml
     #     path: build/spring-music.war
     #     current_app_name: spring-music
 
-  # - name: package-and-deploy
-  #   plan:
-  #   - get: source-code
-  #     passed: [ unit-tests ]
-  #     trigger: true
-  #   - task: package
-  #     file: source-code/ci/tasks/package.yml
+  - name: package-and-deploy
+    plan:
+    - get: source-code
+      passed: [ unit-tests ]
+      trigger: true
+    - task: package
+      file: source-code/ci/tasks/package.yml
+    - put: milestone
+      params:
+        file: build/spring-music*.war
   #   # - put: deploy-dev-app
   #   #   params:
   #   #     manifest: source-code/manifest-test.yml
