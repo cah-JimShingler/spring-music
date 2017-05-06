@@ -11,9 +11,9 @@ apply plugin: 'cloudfoundry'
 apply plugin: 'maven-publish'
 apply plugin: 'jacoco'
 
-plugins {
-  id "org.sonarqube" version "2.4"
-}
+//plugins {
+//  id "org.sonarqube" version "2.4"
+//}
 
 group = 'com.example'
 jar {
@@ -181,9 +181,9 @@ jacoco {
     toolVersion = "0.7.6.201602180812"
 }
 
-sonarqube {
-  properties {
-    property "sonar.projectName", "Spring Music Concourse"
-    property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
-  }
-}
+//sonarqube {
+//  properties {
+//    property "sonar.projectName", "Spring Music Concourse"
+//    property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
+//  }
+//}
