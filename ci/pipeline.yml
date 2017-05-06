@@ -15,9 +15,8 @@ resources:
   - name: milestone
     type: maven-resource
     source:
-      url: http://192.168.1.122:8081/milestones
+      url: http://192.168.1.122:8081/repository/maven-release/
       artifact: com.example:spring-music:war
-      pom_file: source-code/pom.xml
       username: admin
       password: admin123
       skip_cert_check: true
@@ -78,6 +77,7 @@ jobs:
     - put: milestone
       params:
         file: build/spring-music*.war
+        pom_file: source-code/pom.xml
   #   # - put: deploy-dev-app
   #   #   params:
   #   #     manifest: source-code/manifest-test.yml
