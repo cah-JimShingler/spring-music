@@ -9,11 +9,10 @@ echo "Build and Publish to Maven Repo"
 pwd
 cd source-code
 pwd
-./gradlew assemble 
+./gradlew assemble
 #publish
 
 echo "Move artifacts to output area"
-ls -R
 cp build/libs/spring-music.war ../build
 
 echo "Build and Publish -- Done"
