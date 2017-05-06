@@ -14,6 +14,7 @@ outputs:
 
 params:
   USERNAME: NOT_SET_USERNAME
+  SONAR: NOT_SET
 
 run:
   # path: "source-code/gradlew"

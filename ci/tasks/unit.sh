@@ -14,9 +14,12 @@ git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
 # git remote -v
 
+echo "Run Tests and Sonar: ${SONAR}"
+./gradlew -Dsonar.host.url=${SONAR} test sonarqube
+# ./gradlew test
 # Run Test on unrebased branch
-./gradlew test
-./gradlew assemble
+# ./gradlew test
+# ./gradlew assemble
 
 cp build/libs/spring-music.war ../build
 

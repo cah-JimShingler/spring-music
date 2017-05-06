@@ -8,6 +8,20 @@ apply plugin: 'war'
 
 apply plugin: 'cloudfoundry'
 
+apply plugin: 'maven-publish'
+apply plugin: 'jacoco'
+
+plugins {
+  id "org.sonarqube" version "2.4"
+}
+
+group = 'com.example'
+jar {
+	baseName = 'spring-music'
+	version = '0.0.1-SNAPSHOT'
+}
+
+
 version = '1.0'
 
 sourceSets {
@@ -141,3 +155,35 @@ cloudfoundry {
     }
 }
 
+publishing {
+	publications {
+        maven(MavenPublication) {
+            groupId 'com.example'
+            artifactId "${jar.baseName}"
+            version "${jar.version}"
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+        	credentials {
+                username "${repoUsername}"
+                password "${repoPassword}"
+            }
+            // change to point to your repo, e.g. http://my.org/repo
+            url "${repoUrl}/repository/maven-snapshots/"
+        }
+    }
+}
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectName", "Spring Music Concourse"
+    property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
+  }
+}

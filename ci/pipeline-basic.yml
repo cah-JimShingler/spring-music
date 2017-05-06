@@ -22,15 +22,15 @@ resources:
   #     space: {{CF_TEST_SPACE}}
   #     skip_cert_check: true
 
-  # - name: deploy-dev-app
-  #   type: cf
-  #   source:
-  #     api: {{CF_API}}
-  #     username: {{CF_USER}}
-  #     password: {{CF_PASS}}
-  #     organization: {{CF_DEV_ORG}}
-  #     space: {{CF_DEV_SPACE}}
-  #     skip_cert_check: true
+  - name: deploy-dev-app
+    type: cf
+    source:
+      api: {{CF_API}}
+      username: {{CF_USER}}
+      password: {{CF_PASS}}
+      organization: {{CF_DEV_ORG}}
+      space: {{CF_DEV_SPACE}}
+      skip_cert_check: true
 
   # - name: build-artifact-jar
   #   type: maven
@@ -50,20 +50,14 @@ jobs:
     - task: run-tests
       privileged: true
       file: source-code/ci/tasks/unit.yml
+    - put: deploy-dev-app
       params:
-        SONAR: {{SONAR}}
-#DELETE  # - name: unit-tests
-  #   plan:
-  #   - get: source-code
-  #     trigger: true
-  #   - task: run-tests
-  #     privileged: true
-  #     file: source-code/ci/tasks/unit.yml
+        manifest: source-code/manifest.yml
+        path: build/spring-music.war
+        current_app_name: spring-music
     # - put: deploy-dev-app
     #   params:
-    #     manifest: source-code/manifest.yml
-    #     path: build/spring-music.war
-    #     current_app_name: spring-music
+    #     manifest: source-code/manifest-test.yml
 
   # - name: package-and-deploy
   #   plan:
