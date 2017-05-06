@@ -10,6 +10,7 @@ pwd
 cd source-code
 pwd
 ./gradlew assemble
+./gradlew writePom
 #publish
 
 echo "Move artifacts to output area"

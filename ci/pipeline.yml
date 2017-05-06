@@ -17,6 +17,7 @@ resources:
     source:
       url: http://192.168.1.122:8081/milestones
       artifact: com.example:spring-music:war
+      pom_file: source-code/pom.xml
       username: admin
       password: admin123
       skip_cert_check: true
