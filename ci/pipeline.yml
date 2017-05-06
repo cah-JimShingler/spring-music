@@ -12,16 +12,14 @@ resources:
     source:
       uri: {{GIT_REPO}}
       branch: {{GIT_BRANCH}}
-
-resources:
-- name: milestone
-  type: maven-resource
-  source:
-    url: {{MAVEN_REPO}}/milestones
-    artifact: com.example:example-webapp:jar
-    username: admin
-    password: admin123
-    skip_cert_check: true
+  - name: milestone
+    type: maven-resource
+    source:
+      url: http://192.168.1.122:8081/milestones
+      artifact: com.example:spring-music:war
+      username: admin
+      password: admin123
+      skip_cert_check: true
 
   # - name: deploy-test-app
   #   type: cf
