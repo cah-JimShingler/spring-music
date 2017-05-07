@@ -1,4 +1,4 @@
-https://github.com/patrickcrocker/maven-resource
+# https://github.com/patrickcrocker/maven-resource
 resource_types:
   - name: maven-resource
     type: docker-image
