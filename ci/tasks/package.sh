@@ -16,4 +16,6 @@ pwd
 echo "Move artifacts to output area"
 cp build/libs/spring-music.war ../build
 
+./gradlew publish
+
 echo "Build and Publish -- Done"

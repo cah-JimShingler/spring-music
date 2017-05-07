@@ -19,7 +19,7 @@ resources:
       artifact: com.example:spring-music:war
       username: admin
       password: admin123
-      skip_cert_check: true
+      # skip_cert_check: true
 
   # - name: deploy-test-app
   #   type: cf
@@ -74,10 +74,10 @@ jobs:
       trigger: true
     - task: package
       file: source-code/ci/tasks/package.yml
-    - put: milestone
-      params:
-        file: build/spring-music*.war
-        pom_file: source-code/pom.xml
+    # - put: milestone
+    #   params:
+    #     file: build/spring-music.war
+    #     pom_file: source-code/pom.xml
   #   # - put: deploy-dev-app
   #   #   params:
   #   #     manifest: source-code/manifest-test.yml
