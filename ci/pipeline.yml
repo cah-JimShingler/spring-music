@@ -12,13 +12,13 @@ resources:
     source:
       uri: {{GIT_REPO}}
       branch: {{GIT_BRANCH}}
-  - name: milestone
-    type: maven-resource
-    source:
-      url: http://192.168.1.122:8081/repository/maven-release/
-      artifact: com.example:spring-music:war
-      username: admin
-      password: admin123
+  # - name: milestone
+  #   type: maven-resource
+  #   source:
+  #     url: http://192.168.1.122:8081/repository/maven-release/
+  #     artifact: com.example:spring-music:war
+  #     username: admin
+  #     password: admin123
       # skip_cert_check: true
 
   # - name: deploy-test-app
