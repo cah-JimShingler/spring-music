@@ -40,7 +40,7 @@ apply plugin: 'maven'
 group = 'com.example'
 jar {
 	baseName = 'spring-music'
-	version = '0.0.1-SNAPSHOT'
+	version = '0.0.1'
 }
 
 
@@ -176,7 +176,7 @@ publishing {
                 password "${repoPassword}"
             }
             // change to point to your repo, e.g. http://my.org/repo
-            url "${repoUrl}/repository/maven-snapshots/"
+            url "${repoUrl}/repository/maven-releases/"
         }
     }
 }

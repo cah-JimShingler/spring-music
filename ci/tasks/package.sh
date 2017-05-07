@@ -19,6 +19,6 @@ echo "Move artifacts to output area"
 cp build/libs/spring-music.war ../build
 
 # ./gradlew publish -PrepoUrl=${MAVEN_REPO}
-gradle publish -PrepoUrl=${MAVEN_REPO}
+# gradle publish -PrepoUrl=${MAVEN_REPO}
 
 echo "Build and Publish -- Done"
