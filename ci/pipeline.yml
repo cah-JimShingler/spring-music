@@ -1,10 +1,17 @@
 #https://github.com/patrickcrocker/maven-resource
+# resource_types:
+#   - name: maven-resource
+#     type: docker-image
+#     source:
+#       repository: patrickcrocker/maven-resource
+#       tag: latest
+
 resource_types:
   - name: maven-resource
     type: docker-image
     source:
-      repository: patrickcrocker/maven-resource
-      tag: latest
+      repository: twic/maven-repo-resource
+      tag: "1"
 
 resources:
   - name: source-code
@@ -47,6 +54,15 @@ resources:
       group: com.example
       artifact: spring-music
       repository: http://192.168.1.122:8081/repository/maven-snapshots
+
+  # - name: build-artifact-jar
+  #   type: maven-resource
+  #   source:
+  #     url: http://192.168.1.122:8081/repository/maven-release/
+  #     artifact: com.example:spring-music:war
+  #     username: admin
+  #     password: admin123
+      # skip_cert_check: true
 
 
 jobs:
