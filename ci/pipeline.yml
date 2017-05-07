@@ -58,7 +58,7 @@ resources:
   - name: build-artifact-jar
     type: maven-resource
     source:
-      url: {{MAVEN_REPO}}
+      url: {{MAVEN_REPO}} 
       artifact: com.example:spring-music:war
       username: {{MAVEN_USERNAME}}
       password: {{MAVEN_PASSWORD}}
