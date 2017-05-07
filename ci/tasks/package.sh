@@ -16,6 +16,6 @@ pwd
 echo "Move artifacts to output area"
 cp build/libs/spring-music.war ../build
 
-./gradlew publish
+./gradlew publish -PrepoURL=${MAVEN_REPO}
 
 echo "Build and Publish -- Done"

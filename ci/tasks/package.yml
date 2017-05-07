@@ -12,6 +12,9 @@ inputs:
 outputs:
   - name: build
 
+params:
+  MAVEN_REPO: NOT_SET
+
 run:
   path: "source-code/ci/tasks/package.sh"
 #   path: "source-code/gradlew"
