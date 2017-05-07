@@ -3,7 +3,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: java
+    repository: gradle
     tag: latest
 
 inputs:
@@ -17,6 +17,7 @@ params:
 
 run:
   path: "source-code/ci/tasks/package.sh"
+  user: root
 #   path: "source-code/gradlew"
 #   args: ["--build-file", "source-code/build.gradle", "assemble", "publish"]
 
