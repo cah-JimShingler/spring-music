@@ -31,25 +31,23 @@ resources:
   #     space: {{CF_TEST_SPACE}}
   #     skip_cert_check: true
 
-  # - name: deploy-dev-app
-  #   type: cf
-  #   source:
-  #     api: {{CF_API}}
-  #     username: {{CF_USER}}
-  #     password: {{CF_PASS}}
-  #     organization: {{CF_DEV_ORG}}
-  #     space: {{CF_DEV_SPACE}}
-  #     skip_cert_check: true
+  - name: deploy-dev-app
+    type: cf
+    source:
+      api: {{CF_API}}
+      username: {{CF_USER}}
+      password: {{CF_PASS}}
+      organization: {{CF_DEV_ORG}}
+      space: {{CF_DEV_SPACE}}
+      skip_cert_check: true
 
-  # - name: build-artifact-jar
-  #   type: maven
-  #   source:
-  #     group: com.example
-  #     artifact: concourse-spring-boot
-  #     # repository: MAVEN_REPO/repository/maven-snapshots
-  #     repository: http://192.168.1.178:8081/repository/maven-snapshots
-  #     # re:pository: http://172.30.7.5:8081/repository/maven-snapshots
-  #     # repository: http://10.210.168.181:8081/repository/maven-snapshot
+  - name: build-artifact-jar
+    type: maven-resource
+    source:
+      group: com.example
+      artifact: spring-music
+      repository: http://192.168.1.122:8081/repository/maven-snapshots
+
 
 jobs:
   - name: unit-tests
@@ -67,7 +65,7 @@ jobs:
     #     path: build/spring-music.war
     #     current_app_name: spring-music
 
-  - name: package-and-publish
+  - name: package-publish
     plan:
     - get: source-code
       passed: [ unit-tests ]
@@ -98,15 +96,14 @@ jobs:
   #       path: build/spring-music.war
 
 # JLS THIS SHOULD WORK for RETRIEVE and deploy-to-dev
-  # - name: deploy-to-dev
-  #   plan:
-  #   - get: build-artifact-jar
-  #     passed: [ package ]
-  #     trigger: true
-  #   - get: source-code
-  #     passed: [ package]
-  #   - put: deploy-dev-app
-  #     params:
-  #       manifest: source-code/manifest.yml
-  #       current_app_name: spring-music
-  #       path: build-artifact-jar/spring-music.war
+  - name: deploy-to-dev
+    plan:
+    - get: source-code
+      passed: [ package-publish]
+      trigger: true
+    - get: build-artifact-jar
+    - put: deploy-dev-app
+      params:
+        manifest: source-code/manifest.yml
+        current_app_name: spring-music
+        path: build-artifact-jar/spring-music.war
