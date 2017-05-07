@@ -5,6 +5,7 @@ set -x # print commands
 export TERM=${TERM:-dumb}
 
 echo "Build and Publish to Maven Repo"
+whoami
 
 cd source-code
 echo "Configuring Git"

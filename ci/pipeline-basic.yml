@@ -83,6 +83,7 @@ jobs:
   #       current_app_name: spring-music
   #       path: build/spring-music.war
 
+# JLS THIS SHOULD WORK for RETRIEVE and deploy-to-dev
   # - name: deploy-to-dev
   #   plan:
   #   - get: build-artifact-jar

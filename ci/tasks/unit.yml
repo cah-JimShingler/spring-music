@@ -3,7 +3,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: java
+    repository: gradle
     tag: latest
 
 inputs:
@@ -20,6 +20,7 @@ run:
   # path: "source-code/gradlew"
   # args: ["--build-file", "source-code/build.gradle", "assemble", "test"]
   path: "source-code/ci/tasks/unit.sh"
+  user: root
 
 params:
   TERM: -dumb
