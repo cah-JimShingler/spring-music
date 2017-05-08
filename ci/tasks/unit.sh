@@ -4,7 +4,7 @@ set -e # fail fast
 set -x # print commands
 export TERM=${TERM:-dumb}
 
-echo "Build and Publish to Maven Repo"
+echo "Test and Analysis (SonarQube)"
 whoami
 
 cd source-code
@@ -44,3 +44,4 @@ gradle -Dsonar.host.url=${SONAR} test sonarqube
 
 # echo "=============================="
 # echo "Build and Publish -- Done"
+echo "Test and Analysis (SonarQube) -- Done"

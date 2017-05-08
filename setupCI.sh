@@ -7,7 +7,7 @@
 #
 echo "Helpful commands:"
 echo "  fly -t lite login -c http://192.168.100.4:8080"
-echo "  fly -t lite intercept -b 33"
+echo "  fly -t lite intercept -j spring-music_master_CI/unit-test -b 33"
 
 branch=$(git symbolic-ref --short HEAD)
 
