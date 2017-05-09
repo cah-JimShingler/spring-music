@@ -18,9 +18,3 @@ params:
 run:
   path: "source-code/ci/tasks/package.sh"
   user: root
-#   path: "source-code/gradlew"
-#   args: ["--build-file", "source-code/build.gradle", "assemble", "publish"]
-
-# params:
-#   TERM: -dumb
-#   GRADLE_OPTS: -Dorg.gradle.native=false

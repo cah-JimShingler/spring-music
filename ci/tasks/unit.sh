@@ -23,25 +23,4 @@ gradle -Dsonar.host.url=${SONAR} test sonarqube
 
 # cp build/libs/spring-music.war ../build
 
-
-
-# Rebase Origin Master on this branch and rerun test (Build Acceptance)
-# git merge origin/master
-# echo "Rebase master into branch"
-# git pull --rebase origin master
-
-# echo "Run Tests on rebase code"
-# # Run Test on unrebased branch
-# ./gradlew test
-# echo "Passed Gate On: $(date)\n" >> README.md
-
-# # git help
-# git add README.md
-# git commit -m "Dated README"
-
-# # Copy to output areas so it can be pushed back up to repo
-# git clone . ../source-code2
-
-# echo "=============================="
-# echo "Build and Publish -- Done"
 echo "Test and Analysis (SonarQube) -- Done"

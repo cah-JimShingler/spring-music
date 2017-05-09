@@ -6,27 +6,12 @@ resource_types:
       repository: patrickcrocker/maven-resource
       tag: latest
 
-# resource_types:
-#   - name: maven-resource
-#     type: docker-image
-#     source:
-#       repository: twic/maven-repo-resource
-#       tag: "1"
-
 resources:
   - name: source-code
     type: git
     source:
       uri: {{GIT_REPO}}
       branch: {{GIT_BRANCH}}
-  # - name: milestone
-  #   type: maven-resource
-  #   source:
-  #     url: http://192.168.1.122:8081/repository/maven-releases/
-  #     artifact: com.example:spring-music:war
-  #     username: admin
-  #     password: admin123
-      # skip_cert_check: true
 
   # - name: deploy-test-app
   #   type: cf
@@ -48,17 +33,10 @@ resources:
       space: {{CF_DEV_SPACE}}
       skip_cert_check: true
 
-  # - name: build-artifact-jar
-  #   type: maven-resource
-  #   source:
-  #     group: com.example
-  #     artifact: spring-music
-  #     repository: http://192.168.1.122:8081/repository/maven-snapshots
-
   - name: build-artifact-jar
     type: maven-resource
     source:
-      url: {{MAVEN_REPO}} 
+      url: {{MAVEN_REPO}}
       artifact: com.example:spring-music:war
       username: {{MAVEN_USERNAME}}
       password: {{MAVEN_PASSWORD}}
@@ -75,11 +53,6 @@ jobs:
       file: source-code/ci/tasks/unit.yml
       params:
         SONAR: {{SONAR}}
-    # - put: deploy-dev-app
-    #   params:
-    #     manifest: source-code/manifest.yml
-    #     path: build/spring-music.war
-    #     current_app_name: spring-music
 
   - name: package-publish
     plan:
@@ -94,24 +67,7 @@ jobs:
       params:
         file: build/spring-music.war
         pom_file: source-code/pom.xml
-  #   # - put: deploy-dev-app
-  #   #   params:
-  #   #     manifest: source-code/manifest-test.yml
-  #   #     path: build/concourse-spring-boot*.jar
-  #   #     current_app_name: concourse-spring-boot
-  #       # path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
 
-  # - name: deploy-to-dev
-  #   plan:
-  #   - get: source-code
-  #     passed: [ unit-tests]
-  #   - put: deploy-dev-app
-  #     params:
-  #       manifest: source-code/manifest.yml
-  #       current_app_name: spring-music
-  #       path: build/spring-music.war
-
-# JLS THIS SHOULD WORK for RETRIEVE and deploy-to-dev
   - name: deploy-to-dev
     plan:
     - get: source-code

@@ -12,16 +12,6 @@ resources:
       uri: {{GIT_REPO}}
       branch: {{GIT_BRANCH}}
 
-  - name: deploy-dev-app
-    type: cf
-    source:
-      api: {{CF_API}}
-      username: {{CF_USER}}
-      password: {{CF_PASS}}
-      organization: {{CF_DEV_ORG}}
-      space: {{CF_DEV_SPACE}}
-      skip_cert_check: true
-
 jobs:
   - name: unit-tests
     plan:
@@ -30,8 +20,18 @@ jobs:
     - task: run-tests
       privileged: true
       file: source-code/ci/tasks/unit.yml
-    - put: deploy-dev-app
       params:
-        manifest: source-code/manifest.yml
-        path: build/spring-music.war
-        current_app_name: spring-music
+        SONAR: {{SONAR}}
+    # - put: deploy-dev-app
+    #   params:
+    #     manifest: source-code/manifest.yml
+    #     path: build/spring-music.war
+    #     current_app_name: spring-music
+
+  - name: package-and-deploy
+    plan:
+    - get: source-code
+      passed: [ unit-tests ]
+      trigger: true
+    - task: package
+      file: source-code/ci/tasks/package.yml
