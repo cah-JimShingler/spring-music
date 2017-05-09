@@ -1,0 +1,17 @@
+# Hello world
+--------------
+
+fly -t lite logout
+fly -t lite destroy-pipeline -p hello-world
+
+fly -t lite login -c http://localhost:8080
+fly -t lite set-pipeline -p hello-world -c hello.yml
+fly -t lite unpause-pipeline -p hello-world
+fly -t lite trigger-job --job hello-world/hello-world
+fly watch --help
+fly -t lite watch -j hello-world/hello-world
+
+setupCI.sh lite
+fly -t lite unpause-pipeline -p spring-music_master_CI
+fly -t lite trigger-job --job spring-music_master_CI/unit-tests
+fly -t lite watch -j spring-music_master_CI/unit-tests
