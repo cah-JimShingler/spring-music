@@ -11,6 +11,8 @@ fly -t lite trigger-job --job hello-world/hello-world
 fly watch --help
 fly -t lite watch -j hello-world/hello-world
 
+
+fly -t lite destroy-pipeline -p spring-music_master_CI
 setupCI.sh lite
 fly -t lite unpause-pipeline -p spring-music_master_CI
 fly -t lite trigger-job --job spring-music_master_CI/unit-tests

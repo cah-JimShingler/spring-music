@@ -18,13 +18,16 @@ base=`basename "$PWD"`
 myIP=`ifconfig en0 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'`
 MAVEN_REPO="http://${myIP}:8081/repository/maven-releases/"
 SONAR="http://${myIP}:9000"
+MAVEN_RESOURCE="${myIP}:5000/maven-resource"
+GRADLE_RESOURCE="${myIP}:5000/gradle"
+
 echo ""
 echo "Maven Repo: ${MAVEN_REPO}"
 echo "Sonar:      ${SONAR}"
 echo ""
 echo "Setup ${base}_${branch}_CI on target: ${target}"
 echo "========================================"
-fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" -l credentials.yml
+fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" --var "MAVEN_RESOURCE=${MAVEN_RESOURCE}" --var "GRADLE_RESOURCE=${GRADLE_RESOURCE}" -l credentials.yml
 
 # echo ""
 # echo "Setup ${base}_${branch}_Gated on target: ${target}"
