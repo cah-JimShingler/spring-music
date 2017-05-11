@@ -57,6 +57,7 @@ jobs:
         SONAR: {{SONAR}}
         myIP: {{myIP}}
         DOCKER_REGISTRY: {{DOCKER_REGISTRY}}
+        GRADLE_RESOURCE: {{GRADLE_RESOURCE}}
 
   - name: package-publish
     plan:
@@ -69,6 +70,7 @@ jobs:
         MAVEN_REPO: {{MAVEN_REPO}}
         myIP: {{myIP}}
         DOCKER_REGISTRY: {{DOCKER_REGISTRY}}
+        GRADLE_RESOURCE: {{GRADLE_RESOURCE}}
     - put: build-artifact-jar
       params:
         file: build/spring-music.war
