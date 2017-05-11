@@ -4,6 +4,8 @@ set -e # fail fast
 set -x # print commands
 export TERM=${TERM:-dumb}
 
+echo "GRADLE_RESOURCE=${GRADLE_RESOURCE}"
+
 echo "Test and Analysis (SonarQube)"
 whoami
 

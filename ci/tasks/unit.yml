@@ -3,8 +3,8 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    #repository: 192.168.1.122:5000/gradle
-    repository: {{GRADLE_RESOURCE}}
+    repository: 192.168.1.122:5000/gradle
+    #repository: {{GRADLE_RESOURCE}}
     tag: latest
     insecure_registries: [ "192.168.1.122:5000" ]
 
