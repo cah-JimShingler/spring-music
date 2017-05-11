@@ -4,9 +4,9 @@ buildscript {
         maven {
            url "http://${project.properties['myIP'] ?: 'localhost'}:8081/repository/maven-public/"
         }
-        //jcenter()
-        //mavenLocal()
-        //mavenCentral()
+        jcenter()
+        mavenLocal()
+        mavenCentral()
     }
 
     dependencies {
@@ -26,10 +26,10 @@ repositories {
       url "http://${ip}:8081/repository/maven-public/"
      //url "http://192.168.1.122:8081/repository/maven-public/"
     }
-    //maven { url "http://repo.spring.io/snapshot" }
-    //maven { url "http://repo.spring.io/milestone" }
-    //mavenLocal()
-    //mavenCentral()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+    mavenLocal()
+    mavenCentral()
 }
 
 apply plugin: 'java'
