@@ -11,8 +11,8 @@ cd source-code
 pwd
 # ./gradlew assemble
 # ./gradlew writePom
-gradle assemble
-gradle writePom
+gradle -PmyIP=${myIP} assemble
+gradle -PmyIP=${myIP} writePom
 #publish
 
 echo "Move artifacts to output area"

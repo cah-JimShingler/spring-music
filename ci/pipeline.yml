@@ -65,6 +65,7 @@ jobs:
       file: source-code/ci/tasks/package.yml
       params:
         MAVEN_REPO: {{MAVEN_REPO}}
+        myIP: {{myIP}}
     - put: build-artifact-jar
       params:
         file: build/spring-music.war

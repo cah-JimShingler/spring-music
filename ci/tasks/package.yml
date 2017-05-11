@@ -15,6 +15,7 @@ outputs:
 
 params:
   MAVEN_REPO: NOT_SET
+  myIP: NOT_SET
 
 run:
   path: "source-code/ci/tasks/package.sh"
