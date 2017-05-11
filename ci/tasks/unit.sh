@@ -15,7 +15,7 @@ git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
 # git remote -v
 
-echo "Run Tests and Sonar: ${SONAR}"
+echo "Run Tests and Sonar: ${SONAR} - ${myIP}"
 # Run Test on unrebased branch
 # ./gradlew -Dsonar.host.url=${SONAR} test sonarqube
 gradle -Dsonar.host.url=${SONAR} -PmyIP=${myIP} test sonarqube

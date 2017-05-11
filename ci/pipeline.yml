@@ -54,6 +54,7 @@ jobs:
       file: source-code/ci/tasks/unit.yml
       params:
         SONAR: {{SONAR}}
+        myIP: {{myIP}}
 
   - name: package-publish
     plan:
