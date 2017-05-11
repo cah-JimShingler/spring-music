@@ -20,6 +20,7 @@ MAVEN_REPO="http://${myIP}:8081/repository/maven-releases/"
 SONAR="http://${myIP}:9000"
 MAVEN_RESOURCE="${myIP}:5000/maven-resource"
 GRADLE_RESOURCE="${myIP}:5000/gradle"
+DOCKER_REGISTRY="${myIP}:5000"
 
 echo ""
 echo "Maven Repo: ${MAVEN_REPO}"
@@ -27,8 +28,8 @@ echo "Sonar:      ${SONAR}"
 echo ""
 echo "Setup ${base}_${branch}_CI on target: ${target}"
 echo "========================================"
-echo "fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" --var "MAVEN_RESOURCE=${MAVEN_RESOURCE}" --var "GRADLE_RESOURCE=${GRADLE_RESOURCE}" --var "myIP=${myIP}" -l credentials.yml"
-fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" --var "MAVEN_RESOURCE=${MAVEN_RESOURCE}" --var "GRADLE_RESOURCE=${GRADLE_RESOURCE}" --var "myIP=${myIP}" -l credentials.yml
+echo "fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" --var "MAVEN_RESOURCE=${MAVEN_RESOURCE}" --var "GRADLE_RESOURCE=${GRADLE_RESOURCE}" --var "myIP=${myIP}" --var "DOCKER_REGISTRY=${DOCKER_REGISTRY}" -l credentials.yml"
+fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" --var "MAVEN_RESOURCE=${MAVEN_RESOURCE}" --var "GRADLE_RESOURCE=${GRADLE_RESOURCE}" --var "myIP=${myIP}" --var "DOCKER_REGISTRY=${DOCKER_REGISTRY}" -l credentials.yml
 
 # echo ""
 # echo "Setup ${base}_${branch}_Gated on target: ${target}"
