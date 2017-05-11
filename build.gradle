@@ -2,7 +2,7 @@ buildscript {
     repositories {
 
         maven {
-           url "${project.properties['myIP'] ?: "http://localhost"}:8081/repository/maven-public/"
+           url "http://${project.properties['myIP'] ?: 'localhost'}:8081/repository/maven-public/"
         }
         //jcenter()
         //mavenLocal()
@@ -19,11 +19,11 @@ plugins {
   id "org.sonarqube" version "2.4"
 }
 
-def ip = project.properties['myIP'] ?: "http://localhost"
+def ip = project.properties['myIP'] ?: 'localhost'
 
 repositories {
     maven {
-      url "${ip}:8081/repository/maven-public/"
+      url "http://${ip}:8081/repository/maven-public/"
      //url "http://192.168.1.122:8081/repository/maven-public/"
     }
     //maven { url "http://repo.spring.io/snapshot" }
