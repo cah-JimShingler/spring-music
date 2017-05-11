@@ -27,7 +27,8 @@ echo "Sonar:      ${SONAR}"
 echo ""
 echo "Setup ${base}_${branch}_CI on target: ${target}"
 echo "========================================"
-fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" --var "MAVEN_RESOURCE=${MAVEN_RESOURCE}" --var "GRADLE_RESOURCE=${GRADLE_RESOURCE}" -l credentials.yml
+echo "fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" --var "MAVEN_RESOURCE=${MAVEN_RESOURCE}" --var "GRADLE_RESOURCE=${GRADLE_RESOURCE}" --var "myIP=${myIP}"-l credentials.yml"
+fly -t ${target} set-pipeline --pipeline ${base}_${branch}_CI -c ci/pipeline.yml --var "MAVEN_REPO=${MAVEN_REPO}" --var "SONAR=${SONAR}" --var "MAVEN_RESOURCE=${MAVEN_RESOURCE}" --var "GRADLE_RESOURCE=${GRADLE_RESOURCE}" --var "myIP=${myIP}"-l credentials.yml
 
 # echo ""
 # echo "Setup ${base}_${branch}_Gated on target: ${target}"

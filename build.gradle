@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         maven {
-           url "http://192.168.1.122:8081/repository/maven-public/"
+           url "${myIP:http://localhost}/repository/maven-public/"
         }
         //jcenter()
         //mavenLocal()
