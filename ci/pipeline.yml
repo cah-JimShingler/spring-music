@@ -59,11 +59,16 @@ jobs:
             #repository: 192.168.1.122:5000/gradle
             repository: {{GRADLE_RESOURCE}}
             tag: latest
-            insecure_registries: [ "192.168.1.122:5000" ]
+            insecure_registries: [ {{DOCKER_REGISTRY}}]
         inputs:
           - name: source-code
         outputs:
           - name: build
+        params:
+          USERNAME: NOT_SET_USERNAME
+          SONAR: NOT_SET
+          myIP: NOT_SET
+          GRADLE_RESOURCE: NOT_SET
         run:
           # path: "source-code/gradlew"
           # args: ["--build-file", "source-code/build.gradle", "assemble", "test"]
