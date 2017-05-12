@@ -117,6 +117,7 @@ jobs:
       params:
         file: build/spring-music.war
         pom_file: source-code/pom.xml
+        version_file: source-code/version
 
   - name: deploy-to-dev
     plan:
