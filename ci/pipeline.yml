@@ -65,10 +65,8 @@ jobs:
         outputs:
           - name: build
         params:
-          USERNAME: NOT_SET_USERNAME
-          SONAR: NOT_SET
-          myIP: NOT_SET
-          GRADLE_RESOURCE: NOT_SET
+          SONAR: {{SONAR}}
+          myIP: {myIP}
         run:
           # path: "source-code/gradlew"
           # args: ["--build-file", "source-code/build.gradle", "assemble", "test"]
