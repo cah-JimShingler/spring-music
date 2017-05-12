@@ -38,7 +38,8 @@ resources:
   - name: build-artifact-jar
     type: maven-resource
     source:
-      url: {{MAVEN_REPO}}
+      ##url: {{MAVEN_REPO}}
+      url: http://192.168.1.122:8081/repository/maven-releases/
       artifact: com.example:spring-music:war
       username: {{MAVEN_USERNAME}}
       password: {{MAVEN_PASSWORD}}
@@ -101,11 +102,17 @@ jobs:
         outputs:
           - name: build
         params:
-          MAVEN_REPO: {{MAVEN_REPO}}
+          # MAVEN_REPO: {{MAVEN_REPO}}
           myIP: {{myIP}}
         run:
           path: "source-code/ci/tasks/package.sh"
           user: root
+
+    - put: build-artifact-jar
+      params:
+        file: build/spring-music.war
+        pom_file: source-code/pom.xml
+        version_file: source-code/version
     # - task: package
     #   file: source-code/ci/tasks/package.yml
     #   params:
@@ -113,11 +120,6 @@ jobs:
     #     myIP: {{myIP}}
     #     DOCKER_REGISTRY: {{DOCKER_REGISTRY}}
     #     GRADLE_RESOURCE: {{GRADLE_RESOURCE}}
-    - put: build-artifact-jar
-      params:
-        file: build/spring-music.war
-        pom_file: source-code/pom.xml
-        version_file: source-code/version
 
   - name: deploy-to-dev
     plan:
