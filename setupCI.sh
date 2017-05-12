@@ -20,7 +20,7 @@ MAVEN_REPO="http://${myIP}:8081/repository/maven-releases/"
 SONAR="http://${myIP}:9000"
 MAVEN_RESOURCE="${myIP}:5000/maven-resource"
 GRADLE_RESOURCE="${myIP}:5000/gradle"
-DOCKER_REGISTRY="${myIP}:5000"
+DOCKER_REGISTRY="${myIP}:5000/"
 
 echo ""
 echo "Maven Repo: ${MAVEN_REPO}"
