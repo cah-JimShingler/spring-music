@@ -91,11 +91,11 @@ jobs:
       config:
         platform: linux
         image_resource:
-        type: docker-image
-        source:
-          repository: {{GRADLE_RESOURCE}}
-          tag: latest
-          insecure_registries: [ {{DOCKER_REGISTRY}} ]
+          type: docker-image
+          source:
+            repository: {{GRADLE_RESOURCE}}
+            tag: latest
+            insecure_registries: [ {{DOCKER_REGISTRY}} ]
         inputs:
           - name: source-code
         outputs:
