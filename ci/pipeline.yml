@@ -88,12 +88,31 @@ jobs:
       passed: [ unit-tests ]
       trigger: true
     - task: package
-      file: source-code/ci/tasks/package.yml
-      params:
-        MAVEN_REPO: {{MAVEN_REPO}}
-        myIP: {{myIP}}
-        DOCKER_REGISTRY: {{DOCKER_REGISTRY}}
-        GRADLE_RESOURCE: {{GRADLE_RESOURCE}}
+      config:
+        platform: linux
+        image_resource:
+        type: docker-image
+        source:
+          repository: {{GRADLE_RESOURCE}}
+          tag: latest
+          insecure_registries: [ {{DOCKER_REGISTRY}} ]
+        inputs:
+          - name: source-code
+        outputs:
+          - name: build
+        params:
+          MAVEN_REPO: {{MAVEN_REPO}}
+          myIP: {{myIP}}
+        run:
+          path: "source-code/ci/tasks/package.sh"
+          user: root
+    # - task: package
+    #   file: source-code/ci/tasks/package.yml
+    #   params:
+    #     MAVEN_REPO: {{MAVEN_REPO}}
+    #     myIP: {{myIP}}
+    #     DOCKER_REGISTRY: {{DOCKER_REGISTRY}}
+    #     GRADLE_RESOURCE: {{GRADLE_RESOURCE}}
     - put: build-artifact-jar
       params:
         file: build/spring-music.war
