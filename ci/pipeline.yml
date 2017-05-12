@@ -3,10 +3,10 @@ resource_types:
   - name: maven-resource
     type: docker-image
     source:
-      repository: patrickcrocker/maven-resource
-      #repository: {{MAVEN_RESOURCE}}
+      #repository: patrickcrocker/maven-resource
+      repository: {{MAVEN_RESOURCE}}
       tag: latest
-      #insecure_registries: [ {{DOCKER_REGISTRY}} ]
+      insecure_registries: [ {{DOCKER_REGISTRY}} ]
 
 resources:
   - name: source-code
